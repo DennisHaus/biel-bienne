@@ -1,0 +1,80 @@
+name: Update point-cloud catalog
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "scans/**"
+      # Media locations saved from the viewer ("Save for everyone")
+      - "locations/**"
+      - "scripts/generate_catalog.py"
+
+  # Files uploaded to Cloudflare R2 don't trigger GitHub,
+  # so the bucket is checked regularly as well.
+  schedule:
+       - cron: "2-59/5 * * * *"
+
+
+  # "Run workflow" button in the Actions tab, to update right away
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# If several uploads or locations are committed quickly one after the
+# other, run the updates one at a time instead of in parallel.
+concurrency:
+  group: update-catalog
+  cancel-in-progress: false
+
+jobs:
+  update-catalog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install boto3 (R2 access)
+        run: |
+          pip install boto3
+
+      - name: Generate catalog.json
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+        run: |
+          python scripts/generate_catalog.py
+
+      - name: Commit catalog.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add catalog.json
+
+          if git diff --cached --quiet; then
+            echo "catalog.json is already up to date."
+          else
+            git commit -m "Automatically update catalog"
+
+            # Someone may have pushed in the meantime: rebase and retry
+            for attempt in 1 2 3; do
+              if git push; then
+                break
+              fi
+
+              echo "Push rejected, retrying after rebase ($attempt)"
+              git pull --rebase origin main
+            done
+          fi
