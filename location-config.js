@@ -1,5 +1,5 @@
 window.LOCATION_CONFIG = {
-  pageTitle: "Spatial Library Biel-Bienne",
+  pageTitle: "Biel-Bienne",
 
   metaDescription:
     "Cloud optimized point cloud and spatial data viewer.",
@@ -8,14 +8,12 @@ window.LOCATION_CONFIG = {
     "© ETH ZURICH",
 
   brandTitle: `
-    SPATIAL<br>
-    LIBRARY<br>
     BIEL-BIENNE
   `,
 
   catalogUrl: "./catalog.json",
 
-liveCatalogUrl: "https://brinzauls.wi-251124.workers.dev",
+liveCatalogUrl: "https://bienne.wi-251124.workers.dev",
 
   brandSubtitle: `
   copc viewer & point cloud model interface | for collecting, storing and
