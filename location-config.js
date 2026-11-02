@@ -13,7 +13,7 @@ window.LOCATION_CONFIG = {
 
   catalogUrl: "./catalog.json",
 
-liveCatalogUrl: "https://bienne.wi-251124.workers.dev",
+liveCatalogUrl: "https://brinzauls.wi-251124.workers.dev/$site=biel-bienne",
 
   brandSubtitle: `
   copc viewer & point cloud model interface | for collecting, storing and
@@ -81,7 +81,7 @@ liveCatalogUrl: "https://bienne.wi-251124.workers.dev",
 
   /* Needed now, because uploadUrl no longer points to GitHub */
   locationsSaveUrl:
-    "https://github.com/DennisHaus/spatial-library-brinzauls/new/main/locations",
+    "https://github.com/DennisHaus/biel-bienne/new/main/locations",
 
   /*
     Shift added to the coordinates shown when measuring.
@@ -102,7 +102,7 @@ liveCatalogUrl: "https://bienne.wi-251124.workers.dev",
   usageStats: {
     enabled: true,
     apiBase: "https://abacus.jasoncameron.dev",
-    namespace: "spatial-library-brinzauls"
+    namespace: "biel-bienne"
   },
 
   readmeHtml: `
