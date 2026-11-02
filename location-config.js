@@ -60,7 +60,7 @@ liveCatalogUrl: "https://brinzauls.wi-251124.workers.dev/$site=bielbienne",
   },
 
   uploadUrl:
-    "https://dash.cloudflare.com/cda5eaaba44345e253835586b1cc1b29/r2/default/buckets/brinzauls",
+    "https://dash.cloudflare.com/cda5eaaba44345e253835586b1cc1b29/r2/default/buckets/bielbienne",
 
   readmeTitle: "Spatial Library - Read Me",
 
@@ -75,7 +75,7 @@ liveCatalogUrl: "https://brinzauls.wi-251124.workers.dev/$site=bielbienne",
   useRawBaseForPaths: true,
 
   rawBaseUrl:
-    "https://pub-94c79225d4a04ec5ae8026f40699596b.r2.dev",
+    "https://pub-25335b20ee0e4403bd979191bab86ab9.r2.dev",
 
   downloadPassword: "Voser",
 
