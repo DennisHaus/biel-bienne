@@ -72,7 +72,7 @@ liveCatalogUrl: "https://brinzauls.wi-251124.workers.dev/$site=bielbienne",
   useRawBaseForPaths: true,
 
   rawBaseUrl:
-    "https://pub-25335b20ee0e4403bd979191bab86ab9.r2.dev",
+    "https://brinzauls.wi-251124.workers.dev/$site=bielbienne",
 
   downloadPassword: "Voser",
 
