@@ -44,10 +44,7 @@ liveCatalogUrl: "https://brinzauls.wi-251124.workers.dev/$site=bielbienne",
   coordinates:
     "47.132668, 7.234255",
 
-  startView: {
-  position: [607.803, -614.757, 1336.936],
-  target: [5.885, -75.285, 1176.3]
-},
+
 
   navigationMode: "Orbit",
 
